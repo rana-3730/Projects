@@ -1,42 +1,23 @@
 import './App.css'
 import {useState} from "react"
-import PostComponent from "../components/Post.jsx"
+
 function App() {
-     const [posts , setPosts] = useState([]);
-
-    // postComponents => is an array of PostComponents
-    const postComponents = posts.map(post => <PostComponent
-        name={post.name}
-        subtitle={post.subtitle}
-        time={post.time}
-        image={post.image}
-        description={post.description}
-    />)
+    const [count , setCount ] = useState(0) ;
 
 
-
-    function addPost() {
-        setPosts([...posts, {
-            name: "harkirat",
-            subtitle: "10000 followers",
-            time: "2m ago",
-            image: "https://appx-wsb-gcp-mcdn.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg",
-            description: "What to know how to win big? Check out how these folks won $6000 in bounties."
-
-        }])
-
+    function increaseCount() {
+        setCount(count => count + 1 );
     }
+
   return (
       <>
-          <div style={{background: "#dfe6e9", height: "100%",}}>
-              <button onClick={addPost} >Add post</button>
-              <div style={{display: "flex", justifyContent: "center"}}>
-                  <div>
-                      {postComponents}
-                  </div>
-              </div>
+          <div>
+              <div style={{backgroundColor:"red" , width:20 , height:20 , borderRadius:20, marginLeft:5 , display:"flex", justifyContent:"center"}}>
+                  {count}</div>
+              <img src={"https://as1.ftcdn.net/v2/jpg/02/04/42/24/1000_F_204422460_EPBVMqQVwYI7vjMoHycZ0C1ZLZcDAVhE.jpg"}
+              style={{height:30 , width:30}} onClick={increaseCount
+              }/>
           </div>
-
 
       </>
   )
