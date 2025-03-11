@@ -12,13 +12,22 @@ function App() {
 
     // runs on mount
     useEffect(() => {
-        setInterval(() => increaseCount()
+        console.log("above setInterval");
+        setInterval(() => {
+            increaseCount()
+            }
         , 1000)
     }, []);
     // setInterval(increaseCount,1000) => runs on every render
 
     function increaseCount() {
-        setCount(count => count + 1 );
+        setCount(((currValue) => {
+            console.log(`Increase count called ${currValue}`)
+            return currValue + 1 ;
+        }  ));
+
+        // setCount can either take a final value for count or
+        // can take a function which uses current value to get new valuec
     }
 
   return (
