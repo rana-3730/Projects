@@ -1,9 +1,21 @@
 import './App.css'
-import {useState} from "react"
+import {useState , useEffect } from "react"
 
 function App() {
     const [count , setCount ] = useState(0) ;
+    // useEffect => lets you manage side-effects
+    // side-effects => other than rendering the components
+    // starting a clock , fetch data from an api, websockets are  side-effect
+    // Problems => if you directly try to introduce side effects directly in the rendering
+    // logic of a component , React would run that code every time the components renders.
+    // This lead to => unnecessary effects , inconsistent behaviour , performance issues
 
+    // runs on mount
+    useEffect(() => {
+        setInterval(() => increaseCount()
+        , 1000)
+    }, []);
+    // setInterval(increaseCount,1000) => runs on every render
 
     function increaseCount() {
         setCount(count => count + 1 );
