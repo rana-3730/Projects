@@ -5,27 +5,20 @@ function App() {
 
     return (
         <>
-            <Card>
-                <div style={{color: "green"}}>
-                    what do you want to post<br></br>
-                    <input style={{border: null}} type={"text"}/>
-                </div>
-            </Card>
+            <Todo key={1} title={"Go to gym"} done={false}></Todo>
+            <Todo key={2} title={"Eat food"} done={false}></Todo>
 
         </>
     )
 
 }
 
-function Card({children}) {
-    return <div style={{backgroundColor: "grey", borderRadius: 10, color: "white", padding: 10, margin: 10}}>
-        UpperTopBar
-        {children}
-        LowerTopBar
-        {children}
+function Todo({title ,done }){
+    return <div>
+        {title} - {done?"Done" : "Not done"}
+
     </div>
 }
-
 
 
 
