@@ -1,61 +1,40 @@
 import './App.css'
 import React from 'react';
+import {BrowserRouter, Routes , Route } from "react-router-dom"
 import {useState , useEffect } from "react"
 
 function App() {
 
-    // These events
 
     return (
         <>
-            <ErrorBoundary>
-                <Card1></Card1>
-            </ErrorBoundary>
-
-            <Card2></Card2>
-
-
+            hello there
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/neet/online" element={<Neet />}></Route>
+                    <Route path="/jee/online" element={<Jee></Jee>}></Route>
+                    <Route path="/" element={<Home></Home>}></Route>
+                </Routes>
+            </BrowserRouter>
         </>
     )
 
 }
-function Card1(){
-    throw new Error("App is no working ")
-    return <div style={{background: "red" , borderRadius:10 ,padding:10 , margin: 5}}>
-        Hi there
+function Neet(){
+    return <div>
+        Hello Neet aspirants
     </div>
 }
-function Card2(){
-    return <div style={{background: "red" , borderRadius:10 ,padding:10, margin:5}}>
-        Hi there
+function Jee() {
+    return <div>
+        Hello Jee aspirants
     </div>
 }
 
-
-class ErrorBoundary extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { hasError: false };
-    }
-
-    static getDerivedStateFromError(error) {
-        return { hasError: true };
-    }
-
-    componentDidCatch(error, info) {
-        console.error("Error caught:", error, info);
-    }
-
-    render() {
-        if (this.state.hasError) {
-            return <div style={{background: "red", borderRadius: 10, padding: 10, margin: 5}}>
-                Something went wrong
-            </div>
-        }
-
-        return this.props.children;
-    }
+function Home(){
+    return <div>
+        Hello there aspirants
+    </div>
 }
 
-
-export default App
+export default App ;
