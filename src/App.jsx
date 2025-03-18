@@ -1,27 +1,33 @@
 import './App.css'
 import React from 'react';
-import {useRef} from 'react';
+import {useState , useEffect , useRef } from 'react';
 
 
 
 function App() {
-    const inputRef = useRef();
-    // useRef => like id attribute in css it provide a ref attribute
-    // we can give a name to ref
-    // useRef => reference to a value, such that when u change the value ,
-    // the component DOES NOT RE-RENDER
+  const [currentCount , setCurrentCount] = useState(1);
+  // const [timer , setTimer] = useState(0);
+  const timer = useRef()
 
+  // This will run only one time for one click on start button
+  function startClock() {
+      console.log("clock started")
+      let value = setInterval(()=>{
+          setCurrentCount(currentCount => currentCount + 1 )
+      } , 1000)
+      // setTimer(value)
+      timer.current = value
+  }
+  function stopClock() {
+      clearInterval(timer.current);
+  }
 
-    function focusOnInput(){
-        inputRef.current.focus();
-
-
-    }
     return <div>
-        Sign up
-        <input ref={inputRef} type={"text"}/>
-        <input type={"text"}></input>
-        <button onClick={focusOnInput}>Submit</button>
+        {currentCount}
+        <br />
+        <button onClick={startClock}>Start</button>
+        <button onClick={stopClock}>Stop</button>
+
     </div>
 
 }
